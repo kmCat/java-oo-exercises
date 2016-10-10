@@ -1,12 +1,17 @@
+package classDesign;
 
 public class Rectangle {
 	
 	private Integer length;
 	private Integer width;
+	private Integer area;
+	private Integer perimeter;
 	
 	public Rectangle(Integer length, Integer width) {
 		this.length = length;
 		this.width = width;
+		this.area = length * width;
+		this.perimeter = (length * 2) + (width * 2);
 	}
 	
 	public Integer getWidth() {
@@ -17,16 +22,16 @@ public class Rectangle {
 		return this.length;
 	}
 	
-	public static Integer area() {
-		return (this.width * this.length);
+	public Integer getArea() {
+		return this.area;
 	}
 	
-	public Integer perimeter() {
-		return (this.width * 2) + (this.length * 2);
+	public Integer getPerimeter() {
+		return this.perimeter;
 	}
 	
-	public boolean isSquare(Rectangle other) {
-		if (this.width == other.width && this.length == other.length) {
+	public boolean isSquare() {
+		if (this.width == this.length) {
 			return true;
 		}
 		else {
@@ -35,7 +40,7 @@ public class Rectangle {
 	}
 	
 	public boolean isSmaller(Rectangle other) {
-		if (Rectangle.area() < other.area()) {
+		if (this.area < other.area) {
 			return true;
 		}
 		else {
