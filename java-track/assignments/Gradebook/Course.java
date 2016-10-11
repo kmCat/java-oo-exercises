@@ -50,26 +50,24 @@ public class Course {
 		if (this.remainingSeats == 0) {
 			return false;
 		}
-		for (int i = 0; i < roster.length; i++) {
-			if (roster[i] == a) {
+		for (int i = 0; i < this.roster.length; i++) {
+			if (this.roster[i] == a) {
 				return false;
-			}
-			else {
-				roster[i] = a;
 			}	
 		}
+		this.roster[this.roster.length - this.remainingSeats] = a;
+			
 		this.remainingSeats -= 1;
 		return true;
 	}
 	
 	public double averageGPA() {
 		double gpaSum = 0.0;
-		for (int j = 0; j < roster.length; j++) {
-			gpaSum += roster[j].getGPA();
+		for (int j = 0; j < this.roster.length - this.remainingSeats; j++) {
+			gpaSum += this.roster[j].getGPA();			
 		}
-		int classSize = this.roster.length + 1;
-		double classAvg = gpaSum /(double)classSize;
-		return Math.round(classAvg * 1000.0) / 1000.0;
+		double classAvg = gpaSum / (double)(this.roster.length - this.remainingSeats);
+		return classAvg;
 	}
 	
 	public String toString() {

@@ -77,23 +77,16 @@ public class Student {
 	public double computeTuition() {
 		
 		int fullSemesters = this.credits / 15 * 20000;
-		//double semestersPaid = fullSemesters * 20000.0;
-		
 		double leftOver = this.credits % 15 * 1333.33;
-		//double perCredit = 1333.33;
-		
-		//double creditsPaid = perCredit * leftOver;
 		return fullSemesters + leftOver;
 		
-		//double perCredit = Math.round((20000.0 / 15) * 100.0) / 100.0;
-		//return this.credits * perCredit;
 	}
 	
-	public Student createLegacy(Student other){
-		int studentID = this.studentID + other.getStudentID();
-		Student bb = new Student(this.name, other.name, studentID);
-		bb.setGPA((this.GPA + other.GPA)/2.000);
-		bb.setCredits(Math.max(this.credits, other.credits));
+	public Student createLegacy(Student a, Student other){
+		int studentID = a.studentID + other.getStudentID();
+		Student bb = new Student(a.name, other.name, studentID);
+		bb.setGPA((a.GPA + other.GPA)/2.000);
+		bb.setCredits(Math.max(a.credits, other.credits));
 		return bb;
 	}
 	
